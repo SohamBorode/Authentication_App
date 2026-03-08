@@ -1,13 +1,14 @@
 package com.example.simpleauthapp
 
-import android.os.Message
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class AuthViewModel {
+class AuthViewModel : ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val _authState = MutableLiveData<AuthState>()
-
+    val authState : LiveData<AuthState> = _authState
     init {
         checkAuthStatus()
     }
